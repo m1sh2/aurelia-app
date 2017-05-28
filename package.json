@@ -1,0 +1,20 @@
+{
+  "name": "aurelia-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "light-server -s . -p 7000",
+    "server:watch": "light-server -s . -p 7000 -w \"src/**\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mike Datsko <mike@datsko.it> (http://datsko.it)",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "light-server": "^2.0.2"
+  },
+  "dependencies": {
+    "aurelia-fetch-client": "^1.1.2"
+  }
+}

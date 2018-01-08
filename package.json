@@ -1,5 +1,5 @@
 {
-  "name": "todo",
+  "name": "aurelia-app",
   "description": "An Aurelia client application.",
   "version": "0.1.0",
   "repository": {
@@ -8,7 +8,8 @@
   },
   "scripts": {
     "server": "light-server -s . -p 7000",
-    "build:prod": "au build -prod"
+    "build:prod": "au build --env prod",
+    "watch": "au run --env dev --watch"
   },
   "license": "MIT",
   "dependencies": {

@@ -10,7 +10,7 @@ export class App {
 
   constructor() {
     const todos = [];
-    console.log('location', window.location.hash);
+    // console.log('location', window.location.hash);
 
     for (let i = 0; i < 1000; i++) {
       todos.push({
@@ -23,7 +23,7 @@ export class App {
     this.todos = storage.get('au-todos');
 
     window.addEventListener('aurelia-composed', event => {
-      window.parent.postMessage('FRAME_LOADED','https://jsmeasure.herokuapp.com');
+      window.parent.postMessage('FRAME_LOADED',(new URL(document.location.href)).searchParams.get('host_url') || 'http://jsmeasure.surge.sh');
     }, false);
 
     if (!storage.get('au-todos')) {

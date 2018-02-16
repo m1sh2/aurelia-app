@@ -6,8 +6,26 @@ export class App {
   todos: Array<any> = storage.get('au-todos') || [];
   todoDescription: string = '';
   todoType: string = 'story';
+  eventAggregator: any;
 
   constructor() {
+    const todos = [];
+    console.log('location', window.location.hash);
+
+    for (let i = 0; i < 1000; i++) {
+      todos.push({
+        text: 'Test',
+        checked: false
+      });
+    }
+
+    storage.set('au-todos', JSON.stringify(todos));
+    this.todos = storage.get('au-todos');
+
+    window.addEventListener('aurelia-composed', event => {
+      window.parent.postMessage('FRAME_LOADED','https://jsmeasure.herokuapp.com');
+    }, false);
+
     if (!storage.get('au-todos')) {
       storage.set('au-todos', JSON.stringify([
         {'description':'some','done':false,'type':'story'},
@@ -39,4 +57,14 @@ export class App {
     todo.done = isDone;
     storage.set('au-todos', this.todos);
   }
+
+  // activate() {
+  //   this.mainLoadingSubscription = this.eventAggregator.subscribe('main:loading', isLoading => {
+  //     window.parent.postMessage('FRAME_LOADED','http://localhost:3000');
+  //   })
+  // }
+  //
+  // deactivate() {
+  //   this.mainLoadingSubscription.dispose();
+  // }
 }
